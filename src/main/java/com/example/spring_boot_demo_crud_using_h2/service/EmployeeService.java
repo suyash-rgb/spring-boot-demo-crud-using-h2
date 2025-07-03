@@ -39,5 +39,14 @@ public class EmployeeService {
         return employeeRepository.save(existingEmployee);
     }
 
+    public String deleteEmployee(Long id) {
+        if (!employeeRepository.existsById(id)) {
+            throw new RuntimeException("Employee not found");
+        }
+        employeeRepository.deleteById(id);
+        return "Employee deleted successfully";
+    }
+
+
 
 }
